@@ -1,5 +1,7 @@
 package org.paukov.backtracking;
 
+import static java.lang.System.arraycopy;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -79,7 +81,7 @@ public class Sudoku extends Backtracking<Integer, Sudoku.Board> {
 
     public Board(Board board) {
       for (int i = 0; i < matrix.length; i++) {
-        System.arraycopy(board.matrix[i], 0, this.matrix[i], 0, matrix[i].length);
+        arraycopy(board.matrix[i], 0, this.matrix[i], 0, matrix[i].length);
       }
     }
 
