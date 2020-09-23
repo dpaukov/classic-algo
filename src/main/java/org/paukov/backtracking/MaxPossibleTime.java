@@ -75,9 +75,7 @@ public class MaxPossibleTime extends Backtracking<Integer, List<Integer>> {
   protected List<Integer> constructCandidates(Integer[] vector, int k, List<Integer> dataInput) {
     ArrayList<Integer> candidates = new ArrayList<>(dataInput);
     for (int i = 1; i <= k; i++) {
-      if (candidates.contains(vector[i])) {
-        candidates.remove(vector[i]);
-      }
+      candidates.remove(vector[i]);
     }
     return candidates;
   }
