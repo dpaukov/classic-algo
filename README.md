@@ -4,4 +4,5 @@
 # classic-algo
 A collection of the classic algorithms and data structures implemented on java
 
+- Binary Search Tree (BST)
 - Backtracking (for generating subsets, permutations, solving sudoku, etc.)
