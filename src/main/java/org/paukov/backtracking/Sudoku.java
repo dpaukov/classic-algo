@@ -24,16 +24,19 @@ public class Sudoku extends Backtracking<Integer, Sudoku.Board> {
     return sudoku.result;
   }
 
+  @Override
   protected boolean isSolution(Integer[] vector, int k, Board dataInput) {
     Point point = dataInput.nextCell();
     return point == null;
   }
 
+  @Override
   protected void processSolution(Integer[] vector, int k, Board dataInput) {
     result = new Board(dataInput);
     finished = true;
   }
 
+  @Override
   protected List<Integer> constructCandidates(Integer[] vector, int k, Board dataInput) {
     ArrayList<Integer> candidates = new ArrayList<>();
     Point point = dataInput.nextCell();
@@ -45,10 +48,12 @@ public class Sudoku extends Backtracking<Integer, Sudoku.Board> {
     return candidates;
   }
 
+  @Override
   protected void makeMove(Integer[] vector, int k, Board dataInput) {
     dataInput.setCellValue(k, vector[k]);
   }
 
+  @Override
   protected void unmakeMove(Integer[] vector, int k, Board dataInput) {
     dataInput.freeCell(k);
   }
