@@ -44,10 +44,12 @@ public class RemoveInvalidParentheses extends Backtracking<Boolean, List<String>
     return result;
   }
 
+  @Override
   protected boolean isSolution(Boolean[] vector, int k, List<String> dataInput) {
     return k == dataInput.size();
   }
 
+  @Override
   protected void processSolution(Boolean[] vector, int k, List<String> dataInput) {
     int balance = 0;
     int i = 1;
@@ -82,6 +84,7 @@ public class RemoveInvalidParentheses extends Backtracking<Boolean, List<String>
     }
   }
 
+  @Override
   protected List<Boolean> constructCandidates(Boolean[] vector, int k, List<String> dataInput) {
     if (dataInput.get(k).equals("(") || dataInput.get(k).equals(")")) {
       return asList(Boolean.TRUE, Boolean.FALSE);
