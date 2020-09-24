@@ -4,5 +4,7 @@
 # classic-algo
 A collection of the classic algorithms and data structures implemented on java
 
-- Binary Search Tree (BST)
-- Backtracking (for generating subsets, permutations, solving sudoku, etc.)
+- Binary Search Tree (BST).
+- Binary Indexed Tree (BIT, Fenwick Tree) for calculating prefix/range cumulative operations in 
+  O(logn) time complexity.
+- Backtracking (for generating subsets, permutations, solving sudoku, etc.).
