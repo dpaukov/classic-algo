@@ -3,6 +3,7 @@ package org.paukov.tree;
 import static java.util.Arrays.asList;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.paukov.tree.BinaryIndexedTreeFenwick.createIntSumBIT;
+import static org.paukov.tree.BinaryIndexedTreeFenwick.createPrefixMinBIT;
 
 import org.junit.jupiter.api.Test;
 
@@ -63,5 +64,13 @@ final class BinaryIndexedTreeFenwickTest {
     BinaryIndexedTreeFenwick<Integer> bit = createIntSumBIT(asList(1, 2, 3, 4, 5, 6, 7));
     Integer result = bit.queryCumulative(5) - bit.queryCumulative(1);
     assertThat(result).isEqualTo(18);
+  }
+
+  @Test
+  void addIntPrefixMinBIT() {
+    BinaryIndexedTreeFenwick<Integer> bit = createPrefixMinBIT(asList(1, 2, 3, 4, 0, 0, 7));
+    assertThat(bit.queryCumulative(3)).isEqualTo(1);
+    bit.add(2, -7);
+    assertThat(bit.queryCumulative(3)).isEqualTo(-7);
   }
 }

@@ -17,13 +17,13 @@ public class BinaryIndexedTreeFenwick<T> {
 
   private final ArrayList<T> array;
   private final int size;
-  private final BinaryOperator<T> addOperator;
+  private final BinaryOperator<T> binaryOperator;
 
   private BinaryIndexedTreeFenwick(List<T> input,
-      BinaryOperator<T> addOperator) {
+      BinaryOperator<T> binaryOperator) {
     this.size = input.size();
-    this.array = new ArrayList<>(size + 2);
-    this.addOperator = addOperator;
+    this.array = new ArrayList<>(size + 2); // use indexing from 1. o element is ignored.
+    this.binaryOperator = binaryOperator;
     for (int i = 0; i < size + 2; i++) {
       array.add(null);
     }
@@ -32,12 +32,21 @@ public class BinaryIndexedTreeFenwick<T> {
     }
   }
 
-  public static <T> BinaryIndexedTreeFenwick<T> of(List<T> input, BinaryOperator<T> addOperator) {
-    return new BinaryIndexedTreeFenwick<>(input, addOperator);
+  /**
+   * Creates a BIT and applies the specified binary operation. If you want an arbitrary range query
+   * (from any i to any j) be supported you should use invertible operations like addition or
+   * multiplication. Min/max can only support the original cumulative BIT query from 0 to i, not
+   * range minimum queries (RMQ).
+   * <p>
+   * Details: https://stackoverflow.com/questions/31106459/how-to-adapt-fenwick-tree-to-answer-range-minimum-queries
+   */
+  public static <T> BinaryIndexedTreeFenwick<T> of(List<T> input,
+      BinaryOperator<T> binaryOperator) {
+    return new BinaryIndexedTreeFenwick<>(input, binaryOperator);
   }
 
   /**
-   * Creates a binary indexed tree for integer numbers.
+   * Creates a binary indexed tree for SUM of the integer numbers.
    */
   public static BinaryIndexedTreeFenwick<Integer> createIntSumBIT(List<Integer> input) {
     return of(input, (a, b) -> {
@@ -54,12 +63,31 @@ public class BinaryIndexedTreeFenwick<T> {
     });
   }
 
-  // Returns cumulative sum up in the range from 0 to i.
+  /**
+   * Creates a binary indexed tree for Prefix MIN of the integer numbers. This tree does not support
+   * range minimum queries (RMQ).
+   */
+  public static BinaryIndexedTreeFenwick<Integer> createPrefixMinBIT(List<Integer> input) {
+    return of(input, (a, b) -> {
+      if (a == null && b == null) {
+        return null;
+      }
+      if (a == null) {
+        return b;
+      }
+      if (b == null) {
+        return a;
+      }
+      return Math.min(a, b);
+    });
+  }
+
+  // Returns cumulative result up in the range from 0 to i.
   public T queryCumulative(int pos) {
     int i = pos + 1;
     T result = null;
     while (i > 0) {
-      result = addOperator.apply(result, array.get(i));
+      result = binaryOperator.apply(result, array.get(i));
       i -= i & (-i);
     }
     return result;
@@ -69,7 +97,7 @@ public class BinaryIndexedTreeFenwick<T> {
   public void add(int pos, T value) {
     int i = pos + 1;
     while (i <= size + 1) {
-      array.set(i, addOperator.apply(array.get(i), value));
+      array.set(i, binaryOperator.apply(array.get(i), value));
       i += i & (-i);
     }
   }
