@@ -19,8 +19,8 @@ public class SegmentTree<T> {
 
   private SegmentTree(List<T> input, BinaryOperator<T> operator) {
     this.size = input.size();
-    this.array = new ArrayList<>(size * 3);
-    for (int i = 0; i < size * 3; i++) {
+    this.array = new ArrayList<>(size * 4);
+    for (int i = 0; i < size * 4; i++) {
       array.add(null);
     }
     this.operator = operator;
@@ -104,7 +104,8 @@ public class SegmentTree<T> {
   }
 
   /**
-   * Returns an operation specific result from the tree for a given range.
+   * Returns an operation specific result from the tree for a given range with log(n) time
+   * complexity.
    */
   public T queryRange(int start, int end) {
     return query(1, 0, size - 1, start, end);
@@ -118,7 +119,7 @@ public class SegmentTree<T> {
       array.set(node, input.get(l));
       return;
     }
-    int mid = (r + l) / 2;
+    int mid = l + (r - l) / 2;
     int left = node * 2;
     int right = left + 1;
     build(left, input, l, mid);
@@ -134,7 +135,7 @@ public class SegmentTree<T> {
     if (l == start && r == end) {
       return array.get(node);
     }
-    int mid = (l + r) / 2;
+    int mid = l + (r - l) / 2;
     int left = node * 2;
     int right = left + 1;
 
@@ -152,7 +153,7 @@ public class SegmentTree<T> {
       array.set(node, newValue);
       return;
     }
-    int mid = (r + l) / 2;
+    int mid = l + (r - l) / 2;
     int left = node * 2;
     int right = left + 1;
     if (pos <= mid) {
