@@ -120,8 +120,8 @@ public class SegmentTree<T> {
       return;
     }
     int mid = l + (r - l) / 2;
-    int left = node * 2;
-    int right = left + 1;
+    int left = node * 2; // left child (node*2)
+    int right = left + 1; // right child (node*2)+1
     build(left, input, l, mid);
     build(right, input, mid + 1, r);
     T result = operator.apply(array.get(left), array.get(right));
