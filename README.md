@@ -4,9 +4,11 @@
 # classic-algo
 A collection of the classic algorithms and data structures implemented on java
 
+- Binary Search Algorithm.  
 - Binary Search Tree (BST).
 - Binary Indexed Tree (BIT, Fenwick Tree) for calculating prefix/range cumulative operations in 
   O(logn) time complexity.
+- Graph represented by a 2d array: BFS & DFS.
 - Max-Heap. 
 - Segment Tree (updating and querying the data in log(n) time).
 - Trie (Prefix Tree) with the insert, search, and startsWith methods.
