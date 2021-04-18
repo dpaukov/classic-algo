@@ -43,6 +43,10 @@ A collection of the classic algorithms and data structures implemented on java
 
 - [Max-Heap](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/heap/SimpleMaxHeap.java#L5). 
 
+- Partitioning:
+  - QuickSelect is a selection algorithm to find the kth smallest element in an unordered list. It is related to the quicksort sorting algorithm.
+  - Three Way Partitioning (Dutch national flag problem).
+
 - [Segment Tree](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/SegmentTree.java#L14) 
 (updating and querying the data in log(n) time, [tests](https://github.com/dpaukov/classic-algo/blob/master/src/test/java/org/paukov/tree/SegmentTreeTest.java)):
   - [build](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/SegmentTree.java#L114)
