@@ -46,6 +46,7 @@ A collection of the classic algorithms and data structures implemented on java
 - Partitioning:
   - [QuickSelect](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/partition/QuickSelect.java#L13) 
     is a selection algorithm to find the kth smallest element in an unordered list. It is related to the quicksort sorting algorithm.
+  - QuickSort
   - [Three Way Partitioning](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/partition/ThreeWayPartitioning.java#L9)
     (Dutch national flag problem).
 
