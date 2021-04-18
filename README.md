@@ -4,9 +4,19 @@
 # classic-algo
 A collection of the classic algorithms and data structures implemented on java
 
-- [Binary Search Algorithm](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/search/BinarySearch.java#L13)
-and [tests](https://github.com/dpaukov/classic-algo/blob/master/src/test/java/org/paukov/search/BinarySearchTest.java).  
+- Binary Search Algorithm, [tests](https://github.com/dpaukov/classic-algo/blob/master/src/test/java/org/paukov/search/BinarySearchTest.java).
+  - [exactIndex](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/search/BinarySearch.java#L13), 
+    the first occurrence of a target in an array, if it is present. If the target is not present, 
+    it returns the position where the value can be inserted.
+  - [indexRightMost](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/search/BinarySearch.java#L29),
+    the last occurrence of a target (right most index) in an array, if it is present. If the target 
+    is not present, it returns the previous position where the value should be inserted.
+  - [indexIfFound](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/search/BinarySearch.java#L45),
+    the first occurrence of the target (left most index) in the array, if it is present. 
+    If the target is not present, it returns -1;
+    
 - [Binary Search Tree (BST)](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/BinarySearchTree.java#L6).
+
 - Binary tree traversals: 
   - Recursive
     - [inorder](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/BinaryTreeTraversal.java#L12)
@@ -21,14 +31,28 @@ and [tests](https://github.com/dpaukov/classic-algo/blob/master/src/test/java/or
     - [bfs using queue](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/BinaryTreeTraversal.java#L41)
              
 - [Binary Indexed Tree (BIT, Fenwick Tree)](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/BinaryIndexedTreeFenwick.java#L16) for calculating prefix/range cumulative operations in 
-  O(logn) time complexity.
+  O(logn) time complexity ([tests](https://github.com/dpaukov/classic-algo/blob/master/src/test/java/org/paukov/tree/BinaryIndexedTreeFenwickTest.java#L10)).
 
-- Graph represented by a 2d array: BFS & DFS.
+- Graph represented by a 2d array ([tests](https://github.com/dpaukov/classic-algo/blob/master/src/test/java/org/paukov/graph/GraphRepresentedByArray2DTest.java#L12)):
+  - [Iterative BFS](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/graph/GraphRepresentedByArray2D.java#L20) 
+    that returns a parent array for finding paths from any node to the starting point (root).
+  - [Getting path to a root](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/graph/GraphRepresentedByArray2D.java#L112)
+  - [Shortest path](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/graph/GraphRepresentedByArray2D.java#L133)
+  - [Connected components](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/graph/GraphRepresentedByArray2D.java#L151)
+  - [Recursive DFS](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/graph/GraphRepresentedByArray2D.java#L199)
 
-- Max-Heap. 
+- [Max-Heap](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/heap/SimpleMaxHeap.java#L5). 
 
-- Segment Tree (updating and querying the data in log(n) time).
+- [Segment Tree](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/SegmentTree.java#L14) 
+(updating and querying the data in log(n) time, [tests](https://github.com/dpaukov/classic-algo/blob/master/src/test/java/org/paukov/tree/SegmentTreeTest.java)):
+  - [build](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/SegmentTree.java#L114)
+  - [query](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/SegmentTree.java#L131)
+  - [update](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/SegmentTree.java#L148)
+  - [query range](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/SegmentTree.java#L110)
 
-- Trie (Prefix Tree) with the insert, search, and startsWith methods.
+- [Trie (Prefix Tree)](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/trie/Trie.java) 
+  with the insert, search, and startsWith methods, [tests](https://github.com/dpaukov/classic-algo/blob/master/src/test/java/org/paukov/trie/TrieTest.java).
 
-- Backtracking (for generating subsets, permutations, solving sudoku, etc.).
+- [Backtracking](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/backtracking/Backtracking.java#L24) 
+  (for generating subsets, [permutations](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/backtracking/AllPermutations.java), 
+  [solving sudoku](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/backtracking/Sudoku.java), etc.).
