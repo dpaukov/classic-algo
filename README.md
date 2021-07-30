@@ -23,13 +23,13 @@ A collection of the classic algorithms and data structures implemented on java
     - [preorder](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/BinaryTreeTraversal.java#L21)
     - [postorder](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/BinaryTreeTraversal.java#L30)
   - Iterative
-    - [inorder](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/BinaryTreeTraversal.java#L60)
-    - [preorder](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/BinaryTreeTraversal.java#L75)
+    - [inorder](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/BinaryTreeTraversal.java#L85)
+    - [preorder](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/BinaryTreeTraversal.java#L100)
     - postorder
-      - [2 stacks](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/BinaryTreeTraversal.java#L93)
-      - [1 stack](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/BinaryTreeTraversal.java#L116)
+      - [2 stacks](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/BinaryTreeTraversal.java#L118)
+      - [1 stack](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/BinaryTreeTraversal.java#L141)
     - [bfs using queue](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/BinaryTreeTraversal.java#L41)
-             
+    - [bfs by levels using queue](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/BinaryTreeTraversal.java#L61)         
 - [Binary Indexed Tree (BIT, Fenwick Tree)](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/BinaryIndexedTreeFenwick.java#L16) for calculating prefix/range cumulative operations in 
   O(logn) time complexity ([tests](https://github.com/dpaukov/classic-algo/blob/master/src/test/java/org/paukov/tree/BinaryIndexedTreeFenwickTest.java#L10)).
 
