@@ -3,6 +3,7 @@ package org.paukov.tree;
 import static org.fest.assertions.Assertions.assertThat;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.paukov.tree.BinaryTreeTraversal.TreeNode;
@@ -99,5 +100,19 @@ final class BinaryTreeTraversalTest {
     BinaryTreeTraversal.bfs(root, expected);
 
     assertThat(expected).containsExactly(5, 3, 7, 2, 4, 6, 8, 1);
+  }
+
+  @Test
+  void bfsByLevels() {
+    TreeNode root = createTestTree();
+
+    List<List<Integer>> expected = new ArrayList<>();
+    BinaryTreeTraversal.bfsByLevels(root, expected);
+
+    assertThat(expected).containsExactly(
+        Arrays.asList(5),
+        Arrays.asList(3, 7),
+        Arrays.asList(2, 4, 6, 8),
+        Arrays.asList(1));
   }
 }
