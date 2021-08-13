@@ -63,3 +63,7 @@ A collection of the classic algorithms and data structures implemented on java
 - [Backtracking](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/backtracking/Backtracking.java#L24) 
   (for generating subsets, [permutations](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/backtracking/AllPermutations.java), 
   [solving sudoku](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/backtracking/Sudoku.java), etc.).
+
+- [CycleSort](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/cyclesort/CycleSort.java#L10) 
+  and searching all cycles (groups) in a permutation [findCycles](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/cyclesort/CycleSort.java#L22)
+  and [tests](https://github.com/dpaukov/classic-algo/blob/master/src/test/java/org/paukov/cyclesort/CycleSortTest.java#L12)
