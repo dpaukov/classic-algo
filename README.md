@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/dpaukov/classic-algo.svg)](http://travis-ci.org/dpaukov/classic-algo)
+[![Build Status](https://travis-ci.com/dpaukov/classic-algo.svg?branch=master)](https://travis-ci.com/github/dpaukov/classic-algo)
 [![Coverage Status](https://coveralls.io/repos/github/dpaukov/classic-algo/badge.svg?branch=master)](https://coveralls.io/github/dpaukov/classic-algo?branch=master)
 
 # classic-algo
