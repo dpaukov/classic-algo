@@ -30,6 +30,7 @@ A collection of the classic algorithms and data structures implemented on java
       - [1 stack](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/BinaryTreeTraversal.java#L141)
     - [bfs using queue](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/BinaryTreeTraversal.java#L41)
     - [bfs by levels using queue](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/BinaryTreeTraversal.java#L61)         
+
 - [Binary Indexed Tree (BIT, Fenwick Tree)](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/tree/BinaryIndexedTreeFenwick.java#L16) for calculating prefix/range cumulative operations in 
   O(logn) time complexity ([tests](https://github.com/dpaukov/classic-algo/blob/master/src/test/java/org/paukov/tree/BinaryIndexedTreeFenwickTest.java#L10)).
 
@@ -67,3 +68,6 @@ A collection of the classic algorithms and data structures implemented on java
 - [CycleSort](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/cyclesort/CycleSort.java#L10) 
   and searching all cycles (groups) in a permutation [findCycles](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/cyclesort/CycleSort.java#L22)
   and [tests](https://github.com/dpaukov/classic-algo/blob/master/src/test/java/org/paukov/cyclesort/CycleSortTest.java#L12)
+
+- [0/1 Knapsack](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/knapsack/Knapsack.java#L21) 
+  and [tests](https://github.com/dpaukov/classic-algo/blob/master/src/test/java/org/paukov/knapsack/KnapsackTest.java#L12)
