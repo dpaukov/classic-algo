@@ -42,7 +42,9 @@ A collection of the classic algorithms and data structures implemented on java
   - [Connected components](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/graph/GraphRepresentedByArray2D.java#L151)
   - [Recursive DFS](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/graph/GraphRepresentedByArray2D.java#L199)
 
-- [Topological Sort](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/graph/TopologicalSort.java#L26)
+- Topological Sort  
+  - [Topological Sort](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/graph/TopologicalSort.java#L26)
+  - [All possible topological sort sequences using backtracking](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/graph/TopologicalSort.java#L75)
 
 - [Max-Heap](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/heap/SimpleMaxHeap.java#L5) 
 
