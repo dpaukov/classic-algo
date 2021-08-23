@@ -69,4 +69,75 @@ public class TopologicalSort {
 
     return result;
   }
+
+  // returns all possible topological sort ordering
+  // Time: O(V!*E) if no edges, all possible permutations V!.
+  public static List<List<Integer>> allSort(int vertices, int[][] edges) {
+    List<List<Integer>> result = new ArrayList<>();
+    if (vertices<=0){
+      return result;
+    }
+
+    Map<Integer, List<Integer>> graph = new HashMap<>();
+    int[] inDegree = new int[vertices];
+
+    for (int i=0; i<vertices; i++){
+      graph.put(i, new ArrayList<>());
+    }
+    for (int[] edge : edges){
+      graph.get(edge[0]).add(edge[1]);
+      inDegree[edge[1]]++;
+    }
+
+    backtracking(new int[vertices+1], 0, inDegree, graph, result);
+
+    return result;
+  }
+
+  static List<Integer> getCandidates(int[] vector, int k, int[] inDegree){
+    List<Integer> candidates = new ArrayList<>();
+      for (int i = 0; i < inDegree.length; i++) {
+        if (inDegree[i] == 0) {
+          // check that the candidate is not in the vector already
+          boolean find = false;
+          for (int j=1; j<=k; j++){
+            if (vector[j]==i){
+              find = true;
+              break;
+            }
+          }
+          if (!find) {
+            candidates.add(i);
+          }
+        }
+      }
+    return candidates;
+  }
+
+  static void backtracking(int[] vector, int k, int[] inDegree, Map<Integer, List<Integer>> graph,
+      List<List<Integer>> result){
+    if (k == inDegree.length){
+      // Solution found: process it.
+      ArrayList<Integer> order = new ArrayList<>();
+      for (int i=1; i<=k; i++){
+        order.add(vector[i]);
+      }
+      result.add(order);
+    } else {
+      if (k>0) {
+        for (int child : graph.get(vector[k])) {
+          inDegree[child]--;
+        }
+      }
+      for (int candidate : getCandidates(vector, k, inDegree)) {
+        vector[k + 1] = candidate;
+        backtracking(vector, k + 1, inDegree, graph, result);
+      }
+      if (k>0) {
+        for (int child : graph.get(vector[k])) {
+          inDegree[child]++;
+        }
+      }
+    }
+  }
 }
