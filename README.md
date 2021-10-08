@@ -75,3 +75,7 @@ A collection of the classic algorithms and data structures implemented on java
 
 - [0/1 Knapsack](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/knapsack/Knapsack.java#L21) 
   and [tests](https://github.com/dpaukov/classic-algo/blob/master/src/test/java/org/paukov/knapsack/KnapsackTest.java#L12)
+
+- Non-overlapping Intervals:
+  - [Insert](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/intervals/NonOverlappingIntervals.java#L12)
+    interval into a sorted list of the non=overlapping intervals, [tests](https://github.com/dpaukov/classic-algo/blob/master/src/test/java/org/paukov/intervals/NonOverlappingIntervalsTest.java).
