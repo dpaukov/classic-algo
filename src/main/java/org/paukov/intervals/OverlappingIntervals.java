@@ -2,6 +2,7 @@ package org.paukov.intervals;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -31,5 +32,38 @@ public class OverlappingIntervals {
       minHeap.offer(intervals.get(i));
     }
     return result;
+  }
+
+
+  // Time: O(n*logn), Space: O(n).
+  public static List<int[]> mergeToNonOverlapping(List<int[]> overlapped){
+    if (overlapped.size() < 1) {
+      return overlapped;
+    }
+
+    // Sort the overlapped intervals by the start time
+    Collections.sort(overlapped, (a,b) -> a[0]-b[0]);
+
+    // Use the stack implementation of the linked list
+    LinkedList<int[]> stack = new LinkedList<>();
+
+    // Insert the first interval.
+    // We use the 'last' method to preserve the sorted order of the intervals.
+    stack.offerLast(overlapped.get(0));
+
+    for (int i=1; i<overlapped.size(); i++) {
+      int[] topInterval = stack.peekLast();
+      int[] current = overlapped.get(i);
+      // We know that the topInterval should be before the current (because of sorting).
+      if(topInterval[1] >= current[0]) { // Is overlapped?
+        // Remove the top interval
+        stack.pollLast();
+        // Adjust the size of the new interval before its inserting into the list
+        current[0] = Math.min(topInterval[0], current[0]);
+        current[1] = Math.max(topInterval[1], current[1]);
+      }
+      stack.offerLast(current);
+    }
+    return stack;
   }
 }

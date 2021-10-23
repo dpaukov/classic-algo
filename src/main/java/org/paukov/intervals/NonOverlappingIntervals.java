@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class NonOverlappingIntervals {
 
+  // Time: O(n), Space: O(n).
   public static List<int[]> insert(int[] interval, List<int[]> list){
     List<int[]> result = new ArrayList<>();
     int i = 0;
