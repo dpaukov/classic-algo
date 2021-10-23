@@ -81,3 +81,5 @@ A collection of the classic algorithms and data structures implemented on java
     an interval into a sorted list of the non-overlapping intervals, [tests](https://github.com/dpaukov/classic-algo/blob/master/src/test/java/org/paukov/intervals/NonOverlappingIntervalsTest.java).
   - [Find all free slots](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/intervals/OverlappingIntervals.java#L13)
     between (overlapping) intervals, [tests](https://github.com/dpaukov/classic-algo/blob/master/src/test/java/org/paukov/intervals/OverlappingIntervalsTest.java).
+  - [Merge overlapped intervals](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/intervals/OverlappingIntervals.java#L39),
+    [tests](https://github.com/dpaukov/classic-algo/blob/master/src/test/java/org/paukov/intervals/OverlappingIntervalsTest.java#L51)
