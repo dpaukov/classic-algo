@@ -1,5 +1,7 @@
 package org.paukov.tree;
 
+import java.util.Objects;
+
 /**
  * Simple implementation of an unbalanced binary search tree (BST) map.
  */
@@ -19,18 +21,20 @@ public class BinarySearchTree {
     return node.value;
   }
 
-  private Node add(Integer key, Integer value, Node current, Node parent) {
-    Node node;
-    if (current == null) {
-      node = new Node(key, value, null, null, parent);
-    } else {
-      node = current;
-      Integer currentKey = current.key;
-      if (key < currentKey) {
-        node.left = add(key, value, current.left, current);
-      } else if (key > currentKey) {
-        node.right = add(key, value, current.right, current);
-      }
+  private Node add(Integer key, Integer value, Node node, Node parent) {
+    if (node == null) {
+      return new Node(key, value, null, null, parent);
+    }
+
+    if (Objects.equals(node.key, key)){
+      node.value = value; // update the existing value
+      return node;
+    }
+
+    if (key < node.key) {
+      node.left = add(key, value, node.left, node);
+    } else  {
+      node.right = add(key, value, node.right, node);
     }
     return node;
   }
