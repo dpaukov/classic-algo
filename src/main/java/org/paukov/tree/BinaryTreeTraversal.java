@@ -88,7 +88,7 @@ public class BinaryTreeTraversal {
 
     while (node != null || !stack.isEmpty()) {
       while (node != null) {
-        stack.add(node);
+        stack.push(node);
         node = node.left;
       }
       node = stack.pop();
