@@ -44,10 +44,10 @@ public class BinaryTreeTraversal {
       return;
     }
     Queue<TreeNode> queue = new LinkedList<>();
-    queue.offer(root);
+    queue.add(root);
 
     while (!queue.isEmpty()) {
-      TreeNode node = queue.poll();
+      TreeNode node = queue.poll(); // Retrieves and removes the head from the queue.
       output.add(node.val);
       if (node.left != null) {
         queue.add(node.left);
@@ -63,19 +63,19 @@ public class BinaryTreeTraversal {
       return;
     }
     Queue<TreeNode> queue = new LinkedList<>();
-    queue.offer(root);
+    queue.add(root);
 
     while (!queue.isEmpty()) {
       int levelSize = queue.size();
       List<Integer> level = new ArrayList<>();
-      for (int i=0; i< levelSize; i++) {
-        TreeNode node = queue.poll();
+      for (int i = 0; i < levelSize; i++) {
+        TreeNode node = queue.poll(); // Retrieves and removes the head from the queue.
         level.add(node.val);
         if (node.left != null) {
-          queue.offer(node.left);
+          queue.add(node.left);
         }
         if (node.right != null) {
-          queue.offer(node.right);
+          queue.add(node.right);
         }
       }
       output.add(level);
