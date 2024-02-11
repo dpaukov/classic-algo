@@ -6,15 +6,16 @@ import java.util.function.BinaryOperator;
 
 /**
  * General Segment Tree that updates and queries the data with log(n) time complexity.
+ *
  * Details: https://en.wikipedia.org/wiki/Segment_tree
  *          https://cp-algorithms.com/data_structures/segment_tree.html
  *
- * @param <T> Type of the elements.
+ * @param <T> Type of the elements that supports the BinaryOperator.
  */
 public class SegmentTree<T> {
 
   private final int size;
-  private final ArrayList<T> array;
+  private final List<T> array;
   private final BinaryOperator<T> operator;
 
   private SegmentTree(List<T> input, BinaryOperator<T> operator) {
@@ -36,7 +37,7 @@ public class SegmentTree<T> {
   }
 
   /**
-   * Creates a segment tree that stores integer values and let query sum of the elements int a
+   * Creates a segment tree that stores integer values and let query sum of the elements in a
    * specific range.
    */
   public static SegmentTree<Integer> createIntSumTree(List<Integer> list) {
@@ -55,7 +56,7 @@ public class SegmentTree<T> {
   }
 
   /**
-   * Creates a segment tree that stores integer values and let query minimum of the elements int a
+   * Creates a segment tree that stores integer values and let query minimum of the elements in a
    * specific range.
    */
   public static SegmentTree<Integer> createIntMinTree(List<Integer> list) {
@@ -74,7 +75,7 @@ public class SegmentTree<T> {
   }
 
   /**
-   * Creates a segment tree that stores integer values and let query maximum of the elements int a
+   * Creates a segment tree that stores integer values and let query maximum of the elements in a
    * specific range.
    */
   public static SegmentTree<Integer> createIntMaxTree(List<Integer> list) {
@@ -104,8 +105,8 @@ public class SegmentTree<T> {
   }
 
   /**
-   * Returns an operation specific result from the tree for a given range with log(n) time
-   * complexity.
+   * Returns an operation specific result from the tree for a given range  [start, end] with
+   * log(n) time complexity.
    */
   public T queryRange(int start, int end) {
     return query(1, 0, size - 1, start, end);
