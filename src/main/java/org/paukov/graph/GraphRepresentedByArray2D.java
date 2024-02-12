@@ -1,15 +1,20 @@
 package org.paukov.graph;
 
+import static java.util.stream.Collectors.toList;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import java.util.stream.Collectors;
 
 /**
- * This class demonstrates general BFS and DFS algorithms for graph presented by 2D arrays. Only
- * positive values are considered edges in the grid (graph[i][j]). Zero or negative values
- * represents walls (edge absences).
+ * This class demonstrates general BFS and DFS algorithms for graphs presented by 2D arrays.
+ *
+ * Each node (graph[i][j] > 0) is considered valid. Each valid node should have its own unique value.
+ * The edges are only presented between valid adjacent nodes. Zero or negative values of any node
+ * represents walls (edge absences between the node and the other adjacent nodes).
+ *
+ * This representation of the graphs is good for maps and/or mazes.
  */
 public class GraphRepresentedByArray2D {
 
@@ -24,7 +29,7 @@ public class GraphRepresentedByArray2D {
     boolean[][] discovered = new boolean[n][m];
     boolean[][] processed = new boolean[n][m];
 
-    // parents are store in 2 separate arrays for each dimensions.
+    // parents are store in 2 separate arrays for each dimension.
     Integer[][] parent_i = new Integer[n][m];
     Integer[][] parent_j = new Integer[n][m];
 
@@ -47,7 +52,7 @@ public class GraphRepresentedByArray2D {
 
       processed[i][j] = true;
 
-      for (int[] adj : adj(graph, i, j)) {
+      for (int[] adj : adjacentNodes(graph, i, j)) {
         int adj_i = adj[0];
         int adj_j = adj[1];
 
@@ -79,26 +84,33 @@ public class GraphRepresentedByArray2D {
     return new Integer[][][]{parent_i, parent_j};
   }
 
-  static List<int[]> adj(int[][] graph, int i, int j) {
+  /**
+   * Returns a list of the valid adjacent nodes coordinates (x, y) for a given graph and
+   * node (i, j).
+   */
+  static List<int[]> adjacentNodes(int[][] graph, int i, int j) {
     List<int[]> result = new ArrayList<>();
 
     // Adding 4 direction of the cell (i,j) if possible.
-    if (checkBoundaries(graph, i + 1, j)) {
+    if (isValidNode(graph, i + 1, j)) {
       result.add(new int[]{i + 1, j});
     }
-    if (checkBoundaries(graph, i - 1, j)) {
+    if (isValidNode(graph, i - 1, j)) {
       result.add(new int[]{i - 1, j});
     }
-    if (checkBoundaries(graph, i, j + 1)) {
+    if (isValidNode(graph, i, j + 1)) {
       result.add(new int[]{i, j + 1});
     }
-    if (checkBoundaries(graph, i, j - 1)) {
+    if (isValidNode(graph, i, j - 1)) {
       result.add(new int[]{i, j - 1});
     }
     return result;
   }
 
-  static boolean checkBoundaries(int[][] graph, int i, int j) {
+  /**
+   * Returns true if the given node (i, j) is a valid node in the given graph.
+   */
+  static boolean isValidNode(int[][] graph, int i, int j) {
     int n = graph.length;
     int m = graph[0].length;
     return (i >= 0 && i < n && j >= 0 && j < m && graph[i][j] > 0);
@@ -145,7 +157,7 @@ public class GraphRepresentedByArray2D {
       int i = node[0];
       int j = node[1];
       return graph[i][j];
-    }).collect(Collectors.toList());
+    }).collect(toList());
   }
 
   public static List<List<int[]>> getComponents(int[][] graph) {
@@ -174,7 +186,7 @@ public class GraphRepresentedByArray2D {
             component.add(node);
             int node_i = node[0];
             int node_j = node[1];
-            for (int[] adj : adj(graph, node_i, node_j)) {
+            for (int[] adj : adjacentNodes(graph, node_i, node_j)) {
               int adj_i = adj[0];
               int adj_j = adj[1];
               if (!discovered[adj_i][adj_j]) {
@@ -234,7 +246,7 @@ public class GraphRepresentedByArray2D {
     // processNodeBefore(graph, i,j)
     discoveryList.add(graph[i][j]);
 
-    for (int[] adj : adj(graph, i, j)) {
+    for (int[] adj : adjacentNodes(graph, i, j)) {
       int adj_i = adj[0];
       int adj_j = adj[1];
       if (!discovered[adj_i][adj_j]) {

@@ -1,12 +1,18 @@
 package org.paukov.graph;
 
+import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
+import static java.util.stream.Collectors.toList;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.paukov.graph.GraphRepresentedByArray2D.bfs;
+import static org.paukov.graph.GraphRepresentedByArray2D.dfs;
+import static org.paukov.graph.GraphRepresentedByArray2D.getComponents;
+import static org.paukov.graph.GraphRepresentedByArray2D.getPathToRoot;
+import static org.paukov.graph.GraphRepresentedByArray2D.getShortestPath;
+import static org.paukov.graph.GraphRepresentedByArray2D.toNodeValues;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 public final class GraphRepresentedByArray2DTest {
@@ -22,11 +28,12 @@ public final class GraphRepresentedByArray2DTest {
     };
     List<Integer> expectedOutput = new ArrayList<>();
 
-    Integer[][][] parent = GraphRepresentedByArray2D.bfs(graph, 0, 0, expectedOutput);
+    Integer[][][] parent = bfs(graph, 0, 0, expectedOutput);
 
     assertThat(expectedOutput)
         .containsSequence(10, 20, 11, 30, 21, 12, 40, 31, 22, 13, 50, 41, 32, 23, 14, 51, 42, 33,
             24, 15, 52, 43, 34, 25, 53, 44, 35, 54, 45, 55);
+
     assertThat(parent[0]).isEqualTo(
         new Integer[][]{
             {null, 0, 0, 0, 0, 0},
@@ -54,11 +61,12 @@ public final class GraphRepresentedByArray2DTest {
     };
     List<Integer> expectedOutput = new ArrayList<>();
 
-    Integer[][][] parent = GraphRepresentedByArray2D.bfs(graph, 2, 2, expectedOutput);
+    Integer[][][] parent = bfs(graph, 2, 2, expectedOutput);
 
     assertThat(expectedOutput)
         .containsSequence(32, 42, 22, 33, 31, 52, 43, 41, 12, 23, 21, 34, 30, 53, 51, 44, 40, 13,
             11, 24, 20, 35, 54, 50, 45, 14, 10, 25, 55, 15);
+
     assertThat(parent[0]).isEqualTo(
         new Integer[][]{
             {0, 0, 1, 0, 0, 0},
@@ -86,11 +94,12 @@ public final class GraphRepresentedByArray2DTest {
     };
     List<Integer> expectedOutput = new ArrayList<>();
 
-    Integer[][][] parent = GraphRepresentedByArray2D.bfs(graph, 0, 2, expectedOutput);
+    Integer[][][] parent = bfs(graph, 0, 2, expectedOutput);
 
     assertThat(expectedOutput)
         .containsSequence(12, 22, 23, 24, 14, 25, 15, 35, 45, 55, 54, 53, 43, 42, 41, 51, 40, 50,
             30, 20, 10);
+
     assertThat(parent[0]).isEqualTo(
         new Integer[][]{
             {1, null, null, null, 1, 0},
@@ -119,10 +128,10 @@ public final class GraphRepresentedByArray2DTest {
         {60, 61, 62, 63, 64, 65}
     };
     List<Integer> output = new ArrayList<>();
-    Integer[][][] parent = GraphRepresentedByArray2D.bfs(graph, 5, 5, output);
+    Integer[][][] parent = bfs(graph, 5, 5, output);
 
-    List<int[]> path = GraphRepresentedByArray2D.getPathToRoot(parent, 0, 0, 5, 5);
-    List<Integer> nodes = GraphRepresentedByArray2D.toNodeValues(graph, path);
+    List<int[]> path = getPathToRoot(parent, 0, 0, 5, 5);
+    List<Integer> nodes = toNodeValues(graph, path);
 
     assertThat(nodes)
         .containsSequence(65, 64, 63, 62, 52, 51, 50, 40, 30, 31, 32, 33, 34, 24, 14, 13, 12, 11,
@@ -141,10 +150,10 @@ public final class GraphRepresentedByArray2DTest {
         {60, 61, 62, 63, 64, 65}
     };
     List<Integer> output = new ArrayList<>();
-    Integer[][][] parent = GraphRepresentedByArray2D.bfs(graph, 5, 5, output);
+    Integer[][][] parent = bfs(graph, 5, 5, output);
 
-    List<int[]> path = GraphRepresentedByArray2D.getPathToRoot(parent, 5, 5, 5, 5);
-    List<Integer> nodes = GraphRepresentedByArray2D.toNodeValues(graph, path);
+    List<int[]> path = getPathToRoot(parent, 5, 5, 5, 5);
+    List<Integer> nodes = toNodeValues(graph, path);
 
     assertThat(nodes).containsExactly(65);
   }
@@ -161,10 +170,10 @@ public final class GraphRepresentedByArray2DTest {
         {60, 61, 62, 63, 64, 65}
     };
     List<Integer> output = new ArrayList<>();
-    Integer[][][] parent = GraphRepresentedByArray2D.bfs(graph, 5, 5, output);
+    Integer[][][] parent = bfs(graph, 5, 5, output);
 
-    List<int[]> path = GraphRepresentedByArray2D.getPathToRoot(parent, 0, 0, 5, 5);
-    List<Integer> nodes = GraphRepresentedByArray2D.toNodeValues(graph, path);
+    List<int[]> path = getPathToRoot(parent, 0, 0, 5, 5);
+    List<Integer> nodes = toNodeValues(graph, path);
 
     assertThat(nodes).isEmpty();
   }
@@ -181,10 +190,9 @@ public final class GraphRepresentedByArray2DTest {
         {60, 61, 62, 63, 64, 65}
     };
 
-    List<Integer> nodes = GraphRepresentedByArray2D.getShortestPath(graph, 0, 0, 5, 5);
+    List<Integer> nodes = getShortestPath(graph, 0, 0, 5, 5);
 
-    assertThat(nodes)
-        .containsSequence(65, 55, 54, 44, 34, 24, 14, 13, 12, 11, 10);
+    assertThat(nodes).containsSequence(65, 55, 54, 44, 34, 24, 14, 13, 12, 11, 10);
   }
 
   @Test
@@ -197,11 +205,11 @@ public final class GraphRepresentedByArray2DTest {
         {50, 51, 52, 53, 54, 55}
     };
 
-    List<List<int[]>> components = GraphRepresentedByArray2D.getComponents(graph);
+    List<List<int[]>> components = getComponents(graph);
 
     List<List<Integer>> values = components.stream().map(
-        indexes -> GraphRepresentedByArray2D.toNodeValues(graph, indexes))
-        .collect(Collectors.toList());
+        indexes -> toNodeValues(graph, indexes))
+        .collect(toList());
 
     assertThat(values).hasSize(1);
     assertThat(values.get(0)).containsExactly(
@@ -219,15 +227,15 @@ public final class GraphRepresentedByArray2DTest {
         {50, 51, 52, -1, 54, 55}
     };
 
-    List<List<int[]>> components = GraphRepresentedByArray2D.getComponents(graph);
+    List<List<int[]>> components = getComponents(graph);
 
     List<List<Integer>> values = components.stream().map(
-        indexes -> GraphRepresentedByArray2D.toNodeValues(graph, indexes))
-        .collect(Collectors.toList());
+        indexes -> toNodeValues(graph, indexes))
+        .collect(toList());
 
     assertThat(values).containsExactly(
-        Arrays.asList(10, 20, 11, 21, 12, 22, 13, 23, 14, 33, 24, 15, 34, 25, 44, 35, 54, 45, 55),
-        Arrays.asList(40, 50, 41, 51, 42, 52));
+        asList(10, 20, 11, 21, 12, 22, 13, 23, 14, 33, 24, 15, 34, 25, 44, 35, 54, 45, 55),
+        asList(40, 50, 41, 51, 42, 52));
   }
 
   @Test
@@ -240,15 +248,15 @@ public final class GraphRepresentedByArray2DTest {
         {50, 51, 52, 0, 54, 55}
     };
 
-    List<List<int[]>> components = GraphRepresentedByArray2D.getComponents(graph);
+    List<List<int[]>> components = getComponents(graph);
 
     List<List<Integer>> values = components.stream().map(
-        indexes -> GraphRepresentedByArray2D.toNodeValues(graph, indexes))
-        .collect(Collectors.toList());
+        indexes -> toNodeValues(graph, indexes))
+        .collect(toList());
 
     assertThat(values).containsExactly(
-        Arrays.asList(10, 20, 11, 21, 12, 22, 13, 23, 14, 33, 24, 15, 34, 25, 44, 35, 54, 45, 55),
-        Arrays.asList(40, 50, 41, 51, 42, 52));
+        asList(10, 20, 11, 21, 12, 22, 13, 23, 14, 33, 24, 15, 34, 25, 44, 35, 54, 45, 55),
+        asList(40, 50, 41, 51, 42, 52));
   }
 
   @Test
@@ -261,18 +269,18 @@ public final class GraphRepresentedByArray2DTest {
         {50, 51, -1, -1, 54, 55}
     };
 
-    List<List<int[]>> components = GraphRepresentedByArray2D.getComponents(graph);
+    List<List<int[]>> components = getComponents(graph);
 
     List<List<Integer>> values = components.stream().map(
-        indexes -> GraphRepresentedByArray2D.toNodeValues(graph, indexes))
-        .collect(Collectors.toList());
+        indexes -> toNodeValues(graph, indexes))
+        .collect(toList());
 
     assertThat(values).containsExactly(
-        Arrays.asList(10, 20, 11, 21),
-        Arrays.asList(13, 23, 14, 24, 15, 25),
-        Arrays.asList(40, 50, 51),
-        Collections.singletonList(42),
-        Arrays.asList(44, 54, 45, 55));
+        asList(10, 20, 11, 21),
+        asList(13, 23, 14, 24, 15, 25),
+        asList(40, 50, 51),
+        singletonList(42),
+        asList(44, 54, 45, 55));
   }
 
   @Test
@@ -281,7 +289,7 @@ public final class GraphRepresentedByArray2DTest {
         {-1, -1, -1},
         {-1, -1, -1}
     };
-    List<List<int[]>> components = GraphRepresentedByArray2D.getComponents(graph);
+    List<List<int[]>> components = getComponents(graph);
     assertThat(components).isEmpty();
   }
 
@@ -296,8 +304,7 @@ public final class GraphRepresentedByArray2DTest {
     List<int[]> expectedTreeEdgeList = new ArrayList<>();
     List<int[]> expectedBackEdgeList = new ArrayList<>();
 
-    Integer[][][] parent = GraphRepresentedByArray2D
-        .dfs(graph, 0, 0, expectedDiscoveryList, expectedTreeEdgeList, expectedBackEdgeList);
+    Integer[][][] parent = dfs(graph, 0, 0, expectedDiscoveryList, expectedTreeEdgeList, expectedBackEdgeList);
 
     assertThat(expectedDiscoveryList).containsSequence(10, 20, 30, 31, 21, 11, 12, 22, 32);
 
@@ -350,8 +357,7 @@ public final class GraphRepresentedByArray2DTest {
     List<int[]> expectedTreeEdgeList = new ArrayList<>();
     List<int[]> expectedBackEdgeList = new ArrayList<>();
 
-    Integer[][][] parent = GraphRepresentedByArray2D
-        .dfs(graph, 0, 0, expectedDiscoveryList, expectedTreeEdgeList, expectedBackEdgeList);
+    Integer[][][] parent = dfs(graph, 0, 0, expectedDiscoveryList, expectedTreeEdgeList, expectedBackEdgeList);
 
     assertThat(expectedDiscoveryList).containsSequence(10, 20, 30, 31, 32, 11, 12);
 
