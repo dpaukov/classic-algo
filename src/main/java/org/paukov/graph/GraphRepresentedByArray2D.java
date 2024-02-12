@@ -35,15 +35,14 @@ public class GraphRepresentedByArray2D {
 
     discovered[root_i][root_j] = true;
 
-    Queue<Integer> queue_i = new LinkedList<>();
-    Queue<Integer> queue_j = new LinkedList<>();
+    Queue<int[]> queue = new LinkedList<>();
 
-    queue_i.add(root_i);
-    queue_j.add(root_j);
+    queue.add(new int[]{root_i, root_j});
 
-    while (!queue_i.isEmpty()) {
-      int i = queue_i.poll();
-      int j = queue_j.poll();
+    while (!queue.isEmpty()) {
+      int[] node = queue.poll();
+      int i = node[0];
+      int j = node[1];
 
       // Event: process the node (i,j) as desired.
       // call other method here.
@@ -71,8 +70,7 @@ public class GraphRepresentedByArray2D {
           parent_j[adj_i][adj_j] = j;
 
           // Enqueue the node
-          queue_i.add(adj_i);
-          queue_j.add(adj_j);
+          queue.add(new int[]{adj_i, adj_j});
         }
       }
 
