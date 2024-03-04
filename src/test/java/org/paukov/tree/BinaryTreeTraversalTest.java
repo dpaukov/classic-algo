@@ -1,9 +1,9 @@
 package org.paukov.tree;
 
+import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.paukov.tree.BinaryTreeTraversal.TreeNode;
@@ -110,9 +110,9 @@ final class BinaryTreeTraversalTest {
     BinaryTreeTraversal.bfsByLevels(root, expected);
 
     assertThat(expected).containsExactly(
-        Arrays.asList(5),
-        Arrays.asList(3, 7),
-        Arrays.asList(2, 4, 6, 8),
-        Arrays.asList(1));
+        asList(5),
+        asList(3, 7),
+        asList(2, 4, 6, 8),
+        asList(1));
   }
 }
