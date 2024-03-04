@@ -6,7 +6,7 @@ import java.util.List;
 // https://corte.si/posts/code/cyclesort/index.html
 public class CycleSort {
 
-  // Sorts the 0-based array with unique numbers in O(n).
+  // Sorts the 0-based array with unique sequence numbers 0..n-1 in O(n).
   public static void sort(int[] arr){
     int index = 0;
     while(index < arr.length){
