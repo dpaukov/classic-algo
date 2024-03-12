@@ -29,20 +29,20 @@ public class ChildAndStaircase extends Backtracking<Integer, Integer> {
   }
 
   @Override
-  protected boolean isSolution(Integer[] vector, int k, Integer dataInput) {
-    Integer s = sum(vector, k);
+  protected boolean isCorrectSolution(Integer[] solution, int index, Integer dataInput) {
+    Integer s = sum(solution, index);
     return s.equals(dataInput);
   }
 
   @Override
-  protected void processSolution(Integer[] vector, int k, Integer dataInput) {
-    result.add(new ArrayList<>(Arrays.asList(vector).subList(1, k + 1)));
+  protected void processSolution(Integer[] solution, int index, Integer dataInput) {
+    result.add(new ArrayList<>(Arrays.asList(solution).subList(1, index + 1)));
   }
 
   @Override
-  protected List<Integer> constructCandidates(Integer[] vector, int k, Integer dataInput) {
+  protected List<Integer> constructCandidates(Integer[] vector, int index, Integer dataInput) {
     List<Integer> candidates = new ArrayList<>();
-    Integer s = sum(vector, k);
+    Integer s = sum(vector, index);
     int diff = dataInput - s;
     if (diff >= 1) {
       candidates.add(1);

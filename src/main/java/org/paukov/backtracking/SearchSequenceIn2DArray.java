@@ -28,34 +28,34 @@ public class SearchSequenceIn2DArray extends
   }
 
   @Override
-  protected boolean isSolution(Cell[] vector, int k, Grid grid) {
-    return grid.pattern.length == k;
+  protected boolean isCorrectSolution(Cell[] solution, int index, Grid grid) {
+    return grid.pattern.length == index;
   }
 
   @Override
-  protected void processSolution(Cell[] vector, int k, Grid grid) {
+  protected void processSolution(Cell[] solution, int index, Grid grid) {
     if (grid.pattern.length == 0) {
       return; //empty pattern
     }
 
-    Cell lastVisited = vector[k];
-    if (grid.pattern[k - 1] == grid.matrix[lastVisited.i][lastVisited.j]) {
-      System.out.println("Vector: " + Arrays.toString(vector) + ", path: "
-          + Arrays.toString(grid.getPath(vector, k)));
+    Cell lastVisited = solution[index];
+    if (grid.pattern[index - 1] == grid.matrix[lastVisited.i][lastVisited.j]) {
+      System.out.println("Vector: " + Arrays.toString(solution) + ", path: "
+          + Arrays.toString(grid.getPath(solution, index)));
       finished = true;
-      this.vector = vector;
+      this.vector = solution;
     }
   }
 
   @Override
-  protected List<Cell> constructCandidates(Cell[] vector, int k, Grid grid) {
+  protected List<Cell> constructCandidates(Cell[] vector, int index, Grid grid) {
     List<Cell> result = new ArrayList<>();
 
     if (grid.pattern.length == 0) {
       return result; //empty pattern
     }
 
-    if (k == 0) {
+    if (index == 0) {
       for (int i = 0; i < grid.matrix.length; i++) {
         for (int j = 0; j < grid.matrix[i].length; j++) {
           result.add(new Cell(i, j));
@@ -63,9 +63,9 @@ public class SearchSequenceIn2DArray extends
       }
       return result;
     } else {
-      Cell lastVisited = vector[k];
-      if (grid.pattern[k - 1] == grid.matrix[lastVisited.i][lastVisited.j]) {
-        return grid.possibleNextCell(lastVisited, k);
+      Cell lastVisited = vector[index];
+      if (grid.pattern[index - 1] == grid.matrix[lastVisited.i][lastVisited.j]) {
+        return grid.possibleNextCell(lastVisited, index);
       }
     }
     return result;

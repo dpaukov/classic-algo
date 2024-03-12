@@ -18,15 +18,15 @@ public class AllSubsets extends Backtracking<Boolean, Integer> {
   }
 
   @Override
-  protected boolean isSolution(Boolean[] vector, int k, Integer dataInput) {
-    return k == dataInput;
+  protected boolean isCorrectSolution(Boolean[] solution, int index, Integer dataInput) {
+    return index == dataInput;
   }
 
   @Override
-  protected void processSolution(Boolean[] vector, int k, Integer dataInput) {
+  protected void processSolution(Boolean[] solution, int index, Integer dataInput) {
     result.append("{");
     for (int i = 1; i <= dataInput; i++) {
-      if (vector[i] == TRUE) {
+      if (solution[i] == TRUE) {
         result.append(i);
       }
     }
@@ -34,7 +34,7 @@ public class AllSubsets extends Backtracking<Boolean, Integer> {
   }
 
   @Override
-  protected List<Boolean> constructCandidates(Boolean[] vector, int k, Integer dataInput) {
+  protected List<Boolean> constructCandidates(Boolean[] vector, int index, Integer dataInput) {
     return Arrays.asList(TRUE, FALSE);
   }
 }

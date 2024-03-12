@@ -34,23 +34,23 @@ public class LetterCombinationsPhoneNumber extends Backtracking<String, List<Str
   }
 
   @Override
-  protected boolean isSolution(String[] vector, int k, List<String> dataInput) {
-    return k == dataInput.size();
+  protected boolean isCorrectSolution(String[] solution, int index, List<String> dataInput) {
+    return index == dataInput.size();
   }
 
   @Override
-  protected void processSolution(String[] vector, int k, List<String> dataInput) {
+  protected void processSolution(String[] solution, int index, List<String> dataInput) {
     StringBuilder builder = new StringBuilder();
-    for (int i = 1; i <= k; i++) {
-      builder.append(vector[i]);
+    for (int i = 1; i <= index; i++) {
+      builder.append(solution[i]);
     }
     result.add(builder.toString());
   }
 
   @Override
-  protected List<String> constructCandidates(String[] vector, int k, List<String> dataInput) {
+  protected List<String> constructCandidates(String[] vector, int index, List<String> dataInput) {
     try {
-      int number = Integer.parseInt(dataInput.get(k));
+      int number = Integer.parseInt(dataInput.get(index));
       return asList(mapping[number]);
     } catch (NumberFormatException ex) {
       return new ArrayList<>(); // no candidates

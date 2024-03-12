@@ -22,35 +22,35 @@ public class GenerateParentheses extends Backtracking<String, Integer> {
   }
 
   @Override
-  protected boolean isSolution(String[] vector, int k, Integer dataInput) {
-    return (k == 2 * dataInput);
+  protected boolean isCorrectSolution(String[] solution, int index, Integer dataInput) {
+    return (index == 2 * dataInput);
   }
 
   @Override
-  protected void processSolution(String[] vector, int k, Integer dataInput) {
+  protected void processSolution(String[] solution, int index, Integer dataInput) {
     int balance = 0;
     int i = 1;
-    while (balance >= 0 && i <= k) {
-      if (vector[i].equals("(")) {
+    while (balance >= 0 && i <= index) {
+      if (solution[i].equals("(")) {
         balance++;
-      } else if (vector[i].equals(")")) {
+      } else if (solution[i].equals(")")) {
         balance--;
       } else {
-        throw new RuntimeException("Unsupported symbol: " + vector[i]);
+        throw new RuntimeException("Unsupported symbol: " + solution[i]);
       }
       i++;
     }
     if (balance == 0) {
       StringBuilder builder = new StringBuilder();
-      for (i = 1; i <= k; i++) {
-        builder.append(vector[i]);
+      for (i = 1; i <= index; i++) {
+        builder.append(solution[i]);
       }
       result.add(builder.toString());
     }
   }
 
   @Override
-  protected List<String> constructCandidates(String[] vector, int k, Integer dataInput) {
+  protected List<String> constructCandidates(String[] vector, int index, Integer dataInput) {
     return Arrays.asList("(", ")");
   }
 }

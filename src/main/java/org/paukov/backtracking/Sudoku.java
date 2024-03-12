@@ -27,25 +27,25 @@ public class Sudoku extends Backtracking<Integer, Sudoku.Board> {
   }
 
   @Override
-  protected boolean isSolution(Integer[] vector, int k, Board dataInput) {
+  protected boolean isCorrectSolution(Integer[] solution, int index, Board dataInput) {
     Point point = dataInput.nextCell();
     return point == null;
   }
 
   @Override
-  protected void processSolution(Integer[] vector, int k, Board dataInput) {
+  protected void processSolution(Integer[] solution, int index, Board dataInput) {
     result = new Board(dataInput);
     finished = true;
   }
 
   @Override
-  protected List<Integer> constructCandidates(Integer[] vector, int k, Board dataInput) {
+  protected List<Integer> constructCandidates(Integer[] vector, int index, Board dataInput) {
     ArrayList<Integer> candidates = new ArrayList<>();
     Point point = dataInput.nextCell();
     if (point == null) {
       return candidates; // no candidates found
     }
-    dataInput.setMove(k + 1, point);
+    dataInput.setMove(index + 1, point);
     candidates.addAll(dataInput.possibleValues(point));
     return candidates;
   }

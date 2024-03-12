@@ -19,24 +19,24 @@ public class AllPermutations extends Backtracking<Integer, Integer> {
   }
 
   @Override
-  boolean isSolution(Integer[] vector, int k, Integer dataInput) {
-    return k == dataInput;
+  boolean isCorrectSolution(Integer[] solution, int index, Integer dataInput) {
+    return index == dataInput;
   }
 
   @Override
-  void processSolution(Integer[] vector, int k, Integer dataInput) {
-    int[] arr = new int[k];
-    for (int i = 1; i <= k; i++) {
-      arr[i-1] = vector[i];
+  void processSolution(Integer[] solution, int index, Integer dataInput) {
+    int[] arr = new int[index];
+    for (int i = 1; i <= index; i++) {
+      arr[i-1] = solution[i];
     }
     result.add(arr);
   }
 
   @Override
-  List<Integer> constructCandidates(Integer[] vector, int k, Integer dataInput) {
+  List<Integer> constructCandidates(Integer[] vector, int index, Integer dataInput) {
     List<Integer> result = new ArrayList<>();
     boolean[] in_perm = new boolean[dataInput + 1];
-    for (int i = 0; i <= k; i++) {
+    for (int i = 0; i <= index; i++) {
       in_perm[vector[i]] = TRUE;
     }
     for (int i = 1; i <= dataInput; i++) {

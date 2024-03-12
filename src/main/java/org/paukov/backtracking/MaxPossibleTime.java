@@ -50,31 +50,31 @@ public class MaxPossibleTime extends Backtracking<Integer, List<Integer>> {
   }
 
   @Override
-  protected boolean isSolution(Integer[] vector, int k, List<Integer> dataInput) {
-    return k == 4;
+  protected boolean isCorrectSolution(Integer[] solution, int index, List<Integer> dataInput) {
+    return index == 4;
   }
 
   @Override
-  protected void processSolution(Integer[] vector, int k, List<Integer> dataInput) {
-    if (isTime(vector, k)) {
+  protected void processSolution(Integer[] solution, int index, List<Integer> dataInput) {
+    if (isTime(solution, index)) {
       count++;
-      if (compareTime(max, vector) < 0) {
+      if (compareTime(max, solution) < 0) {
         maxCount++;
-        max[1] = vector[1];
-        max[2] = vector[2];
-        max[3] = vector[3];
-        max[4] = vector[4];
+        max[1] = solution[1];
+        max[2] = solution[2];
+        max[3] = solution[3];
+        max[4] = solution[4];
       }
-      System.out.printf("%4d - %d%d:%d%d, max=%d%d:%d%d\n", count, vector[1], vector[2], vector[3],
-          vector[4],
+      System.out.printf("%4d - %d%d:%d%d, max=%d%d:%d%d\n", count, solution[1], solution[2], solution[3],
+          solution[4],
           max[1], max[2], max[3], max[4]);
     }
   }
 
   @Override
-  protected List<Integer> constructCandidates(Integer[] vector, int k, List<Integer> dataInput) {
+  protected List<Integer> constructCandidates(Integer[] vector, int index, List<Integer> dataInput) {
     ArrayList<Integer> candidates = new ArrayList<>(dataInput);
-    for (int i = 1; i <= k; i++) {
+    for (int i = 1; i <= index; i++) {
       candidates.remove(vector[i]);
     }
     return candidates;
