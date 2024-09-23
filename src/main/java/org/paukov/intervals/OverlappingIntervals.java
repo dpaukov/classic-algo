@@ -21,14 +21,19 @@ public class OverlappingIntervals {
     PriorityQueue<int[]> minHeap = new PriorityQueue<>((a,b)-> a[1]-b[1]);
 
     for (int i=0; i<intervals.size(); i++){
+      // We keep adding the intervals that overlaps with the minHeap.peek()
+      // to the heap. Once we detect a non-overlapped interval => we add it to the result.
       while(!minHeap.isEmpty() && minHeap.peek()[1] <= intervals.get(i)[0]){
-        // we need the last interval in the heap to calculate the gap
+        // We need the last interval in the heap to calculate the gap.
+        // The heap has the overlapped intervals, so we need to remove them
+        // until we have a gap and the heap only has one interval.
         if (minHeap.size()==1 && minHeap.peek()[1] != intervals.get(i)[0]){
-          // add the gap to the list
+          // Add the gap to the list
           result.add(new int[]{minHeap.peek()[1], intervals.get(i)[0]});
         }
         minHeap.poll();
       }
+      // Add the new interval into the heap.
       minHeap.offer(intervals.get(i));
     }
     return result;
