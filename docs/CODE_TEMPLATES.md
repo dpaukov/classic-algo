@@ -1,5 +1,7 @@
 ## Code Templates
 
+See also leetcode's [cheatsheets](https://leetcode.com/explore/interview/card/cheatsheets/720/resources/4723/).
+
 ### Two pointers: one input, opposite ends
 ```java
 public int fn(int[] arr) {
