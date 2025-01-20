@@ -83,3 +83,5 @@ A collection of the classic algorithms and data structures implemented on java
     between (overlapping) intervals, [tests](https://github.com/dpaukov/classic-algo/blob/master/src/test/java/org/paukov/intervals/OverlappingIntervalsTest.java).
   - [Merge overlapped intervals](https://github.com/dpaukov/classic-algo/blob/master/src/main/java/org/paukov/intervals/OverlappingIntervals.java#L39),
     [tests](https://github.com/dpaukov/classic-algo/blob/master/src/test/java/org/paukov/intervals/OverlappingIntervalsTest.java#L51)
+
+Other code templates, see [here](https://github.com/dpaukov/classic-algo/blob/master/docs/CODE_TEMPLATES.md).
