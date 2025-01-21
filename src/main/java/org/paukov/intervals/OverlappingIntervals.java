@@ -8,7 +8,7 @@ import java.util.PriorityQueue;
 
 public class OverlappingIntervals {
 
-  // Returns the free slots between the overlapping intervals.
+  // Returns the free slots between the intervals (including the overlapping intervals).
   // Idea: Use the heap to track the end of the intervals.
   // Time: O(nlogn), Space: O(n).
   public static List<int[]> findFreeSlots(List<int[]> intervals){
@@ -31,7 +31,7 @@ public class OverlappingIntervals {
           // Add the gap to the list
           result.add(new int[]{minHeap.peek()[1], intervals.get(i)[0]});
         }
-        minHeap.poll();
+        minHeap.poll(); // removes the element from the heap.
       }
       // Add the new interval into the heap.
       minHeap.offer(intervals.get(i));
